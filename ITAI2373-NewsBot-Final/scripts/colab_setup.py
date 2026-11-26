@@ -31,6 +31,8 @@ def setup(install: bool = True) -> Path:
     if in_colab:
         if not REPO_DIR.exists():
             _run(["git", "clone", "-q", REPO_URL, str(REPO_DIR)])
+        else:  # make sure an existing Colab copy has the latest code
+            subprocess.run(["git", "-C", str(REPO_DIR), "pull", "-q"], check=False)
         root = REPO_DIR / PROJECT_SUBDIR
         os.chdir(root)
         if install and not Path("/content/.newsbot_installed").exists():

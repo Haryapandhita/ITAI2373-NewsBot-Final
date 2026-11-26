@@ -51,6 +51,17 @@ from src.utils.logging_utils import get_logger
 log = get_logger("newsbot")
 
 
+def _sklearn_version() -> str:
+    import sklearn
+    return sklearn.__version__
+
+
+def _compatible(obj) -> bool:
+    """True if a loaded model was trained with the installed scikit-learn version
+    (pickles from another version can load but fail later, e.g. in Colab)."""
+    return getattr(obj, "sklearn_version", None) == _sklearn_version()
+
+
 class NewsBot2:
     """
     The complete NewsBot 2.0 system.
@@ -136,11 +147,16 @@ class NewsBot2:
         path = self.cfg.models_dir / "newsbot2_classifier.joblib"
         if path.exists() and not retrain:
             try:
-                return NewsClassifier.load(path)
+                clf = NewsClassifier.load(path)
+                if _compatible(clf):
+                    clf.predict_with_confidence("test article about football and the economy")  # smoke test
+                    return clf
+                log.warning("Saved classifier was built with another scikit-learn version – retraining")
             except Exception as exc:  # e.g. scikit-learn version mismatch in Colab
                 log.warning("Could not load saved classifier (%s) – retraining", exc)
         train = training_frame(bbc, webz, self.cfg.random_state)
         clf = NewsClassifier(self.cfg.low_confidence, self.cfg.secondary_label_min).train(train["full"], train["category"])
+        clf.sklearn_version = _sklearn_version()
         clf.save(path)
         return clf
 
@@ -148,7 +164,11 @@ class NewsBot2:
         path = self.cfg.models_dir / "language_detector.joblib"
         if path.exists() and not retrain:
             try:
-                return LanguageDetector.load(path)
+                det = LanguageDetector.load(path)
+                if _compatible(det):
+                    det.detect_language("This is a short test sentence.")  # smoke test
+                    return det
+                log.warning("Saved language detector was built with another scikit-learn version – retraining")
             except Exception as exc:
                 log.warning("Could not load language detector (%s) – retraining", exc)
         per_lang = pd.concat([g.sample(min(len(g), 300), random_state=self.cfg.random_state)
@@ -156,6 +176,7 @@ class NewsBot2:
         X, y = LanguageDetector.make_training_snippets(per_lang["text"], per_lang["language"])
         det = LanguageDetector(self.cfg.langid_min_confidence).train(X, y)
         det.train_doc_ids = per_lang["doc_id"].tolist()  # so evaluation can exclude them
+        det.sklearn_version = _sklearn_version()
         det.save(path)
         return det
 
