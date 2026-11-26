@@ -127,6 +127,8 @@ ITAI2373-NewsBot-Final/
 * Small spaCy models make NER errors, especially on non-English scraped text.
 * The intent test set was used during template development; accuracy on new questions will be somewhat lower.
 * Without GPU/transformers: extractive summaries only, LSA search (no cross-lingual retrieval), no machine translation.
+  The transformer path (DistilBART, MarianMT, multilingual MiniLM) was verified in Colab (T4 GPU, transformers 5.x);
+  the reported metrics come from the CPU fallback run.
 
 ## 🙋 My contributions
 

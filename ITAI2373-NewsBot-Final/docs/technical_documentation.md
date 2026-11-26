@@ -20,6 +20,15 @@ with four integrated modules:
 | **C · Multilingual Intelligence** | language ID, translation, cross-language comparison, cultural context | own char n-gram classifier, MarianMT + round-trip chrF, entity-alias normalisation, story linking |
 | **D · Conversational Interface** | natural-language questions with follow-ups | template-bootstrapped intent classifier, rule + NER slot filling, dialogue memory, optional local LLM (Ollama) |
 
+**Verified in Google Colab** (T4 GPU, Python 3.13, transformers 5.x, 25 Nov 2026): the full notebook 07 runs end-to-end
+with all 29 tests passing; DistilBART produces abstractive summaries on CUDA, MarianMT translates
+(*"El Banco Central Europeo subió los tipos de interés…"* → *"The European Central Bank raised interest rates to curb
+inflation."*), and the multilingual MiniLM retrieves cross-lingually (an English article about Apple's AI chip returned
+German articles about Google's AI smartphones as nearest neighbours). Because transformers 5 removed the
+`summarization`/`translation` pipelines, NewsBot calls `AutoModelForSeq2SeqLM.generate` directly
+(`src/language_models/seq2seq.py`). All quantitative results below were produced on CPU with the classical fallbacks,
+so they are a lower bound for search and summarisation quality.
+
 **Design principles.** (1) *Graceful degradation*: every transformer component has a classical fallback, so the
 system runs on any laptop and improves automatically in Colab. (2) *Grounding*: generated text is assembled only
 from facts the system computed. (3) *Measured, not assumed*: every claim in this document is produced by

@@ -102,8 +102,9 @@ class IntelligentSummarizer:
         if self._pipe is None:
             return self.textrank(text)
         chunk = " ".join(text.split()[:700])  # model limit ~1024 tokens
-        return self._pipe.generate([chunk], max_new_tokens=max_length,
-                                   min_new_tokens=min(min_length, max_length - 5))[0]
+        out = self._pipe.generate([chunk], max_new_tokens=max_length,
+                                  min_new_tokens=min(min_length, max_length - 5))[0]
+        return re.sub(r"\s+([.,;:!?])", r"\1", out)  # CNN-style " ." artefacts
 
     # ---------------------------------------------------------- public API
     def summarize_article(self, text: str, summary_type: str = "balanced", method: str = "auto") -> dict:
@@ -161,7 +162,7 @@ class IntelligentSummarizer:
         else:
             informative = re.sub(r"\s*(,|\bwhich\b|\bwho\b|\bafter\b|\bas\b|\bwhile\b)\s.*$", "", first)
             informative = " ".join(informative.split()[:14])
-        tokens = [t for t in self.pre.normalize(text).split() if len(t) > 3]
+        tokens = [t for t in self.pre.normalize(text).split() if len(t) > 3 and "_" not in t]  # skip currency_gbp etc.
         top = [w for w, _ in sorted({t: tokens.count(t) for t in set(tokens)}.items(), key=lambda kv: -kv[1])[:4]]
         keyword = " | ".join(w.capitalize() for w in top)
         social = f"{informative.rstrip('.')} – here's what you need to know"
