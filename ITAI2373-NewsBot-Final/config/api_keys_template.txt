@@ -1,0 +1,19 @@
+# NewsBot 2.0 - environment variable template
+# Copy this file to `.env` (never commit real keys!) or set the variables in
+# your shell / Colab "Secrets" panel. NewsBot runs WITHOUT any keys: every
+# external service is optional and has a local fallback.
+
+# Optional: local LLM through Ollama (only used to polish chatbot wording)
+NEWSBOT_USE_LLM=0
+OLLAMA_HOST=http://localhost:11434
+OLLAMA_MODEL=llama3.2
+
+# Optional: switch transformer models off (1 = use HuggingFace models, 0 = classical fallbacks only)
+NEWSBOT_USE_TRANSFORMERS=1
+
+# Optional: override model names
+NEWSBOT_EMBEDDING_MODEL=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+NEWSBOT_SUMMARY_MODEL=sshleifer/distilbart-cnn-12-6
+
+# Optional: HuggingFace token (only needed for gated models; none are used by default)
+HF_TOKEN=

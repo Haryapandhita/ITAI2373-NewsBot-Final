@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+
+# Data: raw and processed article text is NOT redistributed
+# (BBC copyright; Webz.io terms of use). It is downloaded on first run.
+data/raw/*
+!data/raw/README.md
+data/processed/*
+!data/processed/README.md
+
+# Large / environment-specific model files (re-created by the notebooks)
+data/models/newsbot2_system.joblib
+data/models/newsbot2_classifier.joblib
+data/results/exports/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,5 @@
+# not part of the repository
+*.tar.gz
+PRESENTATION_OUTLINE.md
+Canvas_Submission/
+.DS_Store

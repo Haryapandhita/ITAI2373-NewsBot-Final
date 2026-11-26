@@ -1,0 +1,16 @@
+topic,label,top_words,prevalence,npmi
+6,users / features / online,"users, features, online, up, using, google, phone, mobile, free, software",0.1179,0.1896
+1,game / season / team,"game, season, team, points, games, win, play, nba, second, night",0.1037,0.307
+8,court / law / state,"court, law, state, case, federal, justice, legal, attorney, police, supreme",0.1018,0.3067
+14,match / cup / win,"match, cup, win, england, world, against, final, team, game, club",0.0959,0.1931
+4,ai / technology / solutions,"ai, technology, solutions, development, industry, digital, business, global, innovation, data",0.0919,0.2904
+12,health / treatment / study,"health, treatment, study, patients, research, cancer, care, medical, disease, researchers",0.0735,0.375
+7,israel / ukraine / military,"israel, ukraine, military, russia, war, israeli, gaza, russian, iran, minister",0.0635,0.4083
+11,stock / price / market,"stock, price, market, trading, investors, shares, stocks, company, earnings, buy",0.062,0.4271
+10,film / awards / award,"film, awards, award, best, films, actor, music, star, actress, oscar",0.0615,0.3546
+2,trump / biden / president,"trump, biden, president, donald, donald trump, harris, joe, election, campaign, joe biden",0.0581,0.5072
+5,labour / minister / party,"labour, minister, party, election, blair, government, prime minister, prime, tories, tory",0.0576,0.4437
+0,growth / economy / economic,"growth, economy, economic, prices, bank, rate, market, sales, oil, rates",0.0542,0.2881
+13,brighton / tottenham / spurs,"brighton, tottenham, spurs, pedro, postecoglou, joao pedro, joao, veliz, ange, estupinan",0.0238,0.8546
+3,arsenal / west ham / ham,"arsenal, west ham, ham, west, arteta, premier league, league, premier, soucek, liverpool",0.022,0.6971
+9,cd / ed / ce,"cd, ed, ce, ac, fc, fd, cj, ec, ee, ej",0.0128,0.7393

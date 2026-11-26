@@ -1,0 +1,7 @@
+model,accuracy,macro_f1,train_s
+Naive Bayes (word TF-IDF),0.9714,0.9699,0.1551
+Logistic Regression (word TF-IDF),0.9761,0.9751,0.2527
+Linear SVM (word TF-IDF) – midterm style,0.9785,0.9775,0.6058
+Linear SVM (word+char TF-IDF),0.9761,0.9754,3.7554
+"NewsBot 2.0 Ensemble (SVM+LR+NB, word+char)",0.9737,0.9727,7.78
+Midterm Linear SVM (reported),0.9617,0.9582,

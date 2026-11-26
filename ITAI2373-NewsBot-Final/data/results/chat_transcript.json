@@ -1,0 +1,106 @@
+[
+  {
+    "user": "hi",
+    "bot": "Hi! I'm NewsBot 2.0. Ask me about news topics, sentiment, entities or trends (type 'help' for ideas).",
+    "intents": [
+      "greeting"
+    ],
+    "ms": 26
+  },
+  {
+    "user": "Show me positive tech news from this year",
+    "bot": "These articles match for positive tech news from 2026-01-01 to 2026-11-13 (5 shown):\n  1. Latest news bulletin | August 13th, 2026 - Morning  [tech · en · 2026-08-13 · positive]\n  2. German futurists: Openness and fast iteration drive China's tech  [tech · en · 2026-08-13 · positive]\n  3. Life science, industrials, financials and tech as key AI beneficiaries  [tech · en · 2026-08-13 · positive]\n  4. Inzi Controls wins cell connection system order from Hyundai Mobis  [tech · en · 2026-08-13 · positive]\n  5. Apple explores publisher deals to power smarter Siri  [tech · en · 2026-08-13 · positive]\nYou can ask me to summarize them, compare them, or show only positive/negative ones.",
+    "intents": [
+      "search"
+    ],
+    "ms": 420
+  },
+  {
+    "user": "what about last year?",
+    "bot": "These articles match for positive tech news from 2025-01-01 to 2025-12-31 (5 shown):\n  1. Cramer Called Tech's Bounce Back a Stay of Execution, But Amazon (AMZN), Apple (AAPL) and Broadcom (  [tech · en · 2025-04-02 · positive]\n  2. Sinclair Breaks Ground as First Broadcaster Approved for Drone Operations Over People  [tech · en · 2025-04-02 · positive]\n  3. Students at Thomasville High dive into cybersecurity  [tech · en · 2025-04-02 · positive]\n  4. Another DJI rival bites the dust - Autel quits consumer drones, here's what you need to know  [tech · en · 2025-08-21 · positive]\n  5. Shenmue Is The Most Influential Game Of All Time According To BAFTA  [tech · en · 2025-04-02 · positive]\nYou can ask me to summarize them, compare them, or show only positive/negative ones.",
+    "intents": [
+      "search"
+    ],
+    "ms": 429
+  },
+  {
+    "user": "only negative ones",
+    "bot": "Here's what I found for negative tech news from 2025-01-01 to 2025-12-31 (5 shown):\n  1. Dogecoin: Bullische Trader unter Druck - Liquidationen nehmen zu!  [tech · de · 2025-08-21 · negative]\n  2. Cybertruck: Von futuristischer Hoffnung zum verstaubten Ladenhüter  [tech · de · 2025-08-21 · negative]\n  3. QuickBooks Error 1406 - Prevent Installation Issues | Article One  [tech · en · 2025-08-21 · negative]\n  4. 73 Milliarden USD verbrannt: Monster-Momentum vorbei? Palantir stürzt ab - und die Bären fressen sic  [tech · de · 2025-08-21 · negative]\n  5. Docker Desktop: Critical vulnerability allows host access | heise online  [tech · en · 2025-08-21 · negative]\nYou can ask me to summarize them, compare them, or show only positive/negative ones.",
+    "intents": [
+      "search"
+    ],
+    "ms": 51
+  },
+  {
+    "user": "summarize them",
+    "bot": "In a nutshell (5 articles on negative tech news from 2025-01-01 to 2025-12-31):\nDOGE-Rückgang löst Long-Liquidationen aus Der jüngste Rückgang des DOGE-Kurses, verschärft durch den breiteren Marktrückgang, hat eine Welle von Long-Liquidationen auf dem Futures-Markt ausgelöst. Running QuickBooks as an administrator and repairing the installation often solves the issue. Während Anleger zittern, feiern Short-Seller Gewinne von 1,6 Milliarden US-Dollar - der härteste Absturz seit April 2024.Palantir hat in nur sechs Handelstagen rund 73 Milliarden US-Dollar an Marktwert verloren. Diese Einnahmen gleichen jedoch nur einen Teil der 4,5 Milliarden US-Dollar an Verlusten aus, die Shortseller in diesem Jahr bislang erlitten haben. In the container software Docker Desktop, attackers can access the Docker engine and subsequently the file system of the host system from malicious containers.",
+    "intents": [
+      "summarize"
+    ],
+    "ms": 19
+  },
+  {
+    "user": "Compare Apple and Google",
+    "bot": "Comparison:\n  • Google: 704 articles, average tone +0.06, 48% positive, mostly tech\n  • Apple: 423 articles, average tone +0.10, 60% positive, mostly tech\nGoogle gets more coverage; Apple gets the friendlier tone.",
+    "intents": [
+      "compare"
+    ],
+    "ms": 542
+  },
+  {
+    "user": "How are Donald Trump and China connected?",
+    "bot": "Donald Trump and China appear together in 19 articles; extracted relations: get (1x), back (1x).",
+    "intents": [
+      "entity"
+    ],
+    "ms": 13
+  },
+  {
+    "user": "Who is Elon Musk?",
+    "bot": "Elon Musk (PERSON) is mentioned in 34 articles, mostly in tech (22), business (6), politics (6). Most often mentioned with: Donald Trump, United States, AI, Twitter, Tesla.",
+    "intents": [
+      "entity"
+    ],
+    "ms": 11
+  },
+  {
+    "user": "What topics are trending in business?",
+    "bot": "Main topics:\n  • stock / price / market – 18% of articles (stock, price, market, trading, investors, shares, stocks, co...)\n  • growth / economy / economic – 16% of articles (growth, economy, economic, prices, bank, rate, market, sales...)\n  • ai / technology / solutions – 15% of articles (ai, technology, solutions, development, industry, digital, b...)\n  • users / features / online – 11% of articles (users, features, online, up, using, google, phone, mobile, f...)\n  • court / law / state – 9% of articles (court, law, state, case, federal, justice, legal, attorney, ...)\n  • health / treatment / study – 6% of articles (health, treatment, study, patients, research, cancer, care, ...)\nGrowing fastest: stock / price / market, game / season / team, match / cup / win",
+    "intents": [
+      "topics"
+    ],
+    "ms": 267
+  },
+  {
+    "user": "How has sentiment about China changed over time?",
+    "bot": "Trend for news about China: coverage became more negative (2023Q4: +0.12 → 2026Q4: +0.09).\nBusiest period: 2023Q4 with 165 articles.\n  2025Q1: +0.10 (10 articles)\n  2025Q2: -0.01 (41 articles)\n  2025Q3: -0.01 (43 articles)\n  2025Q4: +0.13 (2 articles)\n  2026Q1: -0.02 (37 articles)\n  2026Q2: +0.03 (7 articles)\n  2026Q3: +0.12 (101 articles)\n  2026Q4: +0.09 (59 articles)",
+    "intents": [
+      "trends"
+    ],
+    "ms": 265
+  },
+  {
+    "user": "Compare Spanish and German politics news",
+    "bot": "Comparison:\n  • Spanish: 1171 articles, average tone -0.02, 15% positive, mostly politics\n  • German: 61 articles, average tone -0.24, 0% positive, mostly politics\nSpanish gets more coverage; Spanish gets the friendlier tone.",
+    "intents": [
+      "compare"
+    ],
+    "ms": 18
+  },
+  {
+    "user": "Classify this article: Shares in Tesla fell 5% after the earnings call disappointed investors.",
+    "bot": "Category: business (confidence 91%)\nTone: negative (-0.48)\nEntities: Tesla\nTopics: stock / price / market, growth / economy / economic, trump / biden / president\nSummary: Shares in Tesla fell 5% after the earnings call disappointed investors.",
+    "intents": [
+      "classify"
+    ],
+    "ms": 29
+  },
+  {
+    "user": "give me an overview",
+    "bot": "Key insights:\n  • 15,242 articles analysed; largest category is politics (30% of coverage).\n  • Most negative coverage: politics (+0.01); most positive: entertainment (+0.18).\n  • Tone differs by language: de sources are the most negative (-0.21), en the most positive (+0.10).\n  • Overall tone worsened from 2023Q4 (+0.09) to 2026Q4 (+0.05).\n  • Most mentioned entities: United States (2002), United Kingdom (833), Donald Trump (663), China (432), AI (420).\nBased on your questions you seem interested in tech, China, Google – ask me for a focused report.",
+    "intents": [
+      "insights"
+    ],
+    "ms": 81
+  }
+]

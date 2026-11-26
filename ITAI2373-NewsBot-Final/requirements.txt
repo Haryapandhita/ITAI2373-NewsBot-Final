@@ -1,0 +1,34 @@
+# NewsBot 2.0 – Python dependencies
+# Tested with Python 3.12/3.13 (Google Colab and local). Install with:
+#   pip install -r requirements.txt
+#   python -m spacy download en_core_web_sm
+#   python -m spacy download xx_ent_wiki_sm
+
+# --- core (required) -------------------------------------------------------
+numpy>=1.26
+pandas>=2.2
+scipy>=1.11
+scikit-learn>=1.4            # tested 1.9.1; saved .joblib models are re-trained automatically on version mismatch
+spacy>=3.7,<4.0              # tested 3.8; en_core_web_sm + xx_ent_wiki_sm models
+vaderSentiment>=3.3.2        # sentence-level sentiment (bundled lexicon, no downloads)
+nrclex>=4.0                  # NRC emotion lexicon (read directly from the package data)
+networkx>=3.2                # knowledge graph
+joblib>=1.3
+matplotlib>=3.8
+plotly>=5.20                 # interactive topic map
+tabulate>=0.9                # Markdown tables in reports
+langdetect>=1.0.9            # baseline for our own language detector
+rouge-score>=0.1.2           # summary / headline evaluation
+sacrebleu>=2.4               # translation quality (chrF / BLEU)
+
+# --- transformer components (optional; pre-installed on Google Colab) -------
+# Without them NewsBot falls back to classical methods automatically.
+transformers>=4.40           # DistilBART summarisation, MarianMT translation, XLM-R sentiment
+sentence-transformers>=2.7   # multilingual MiniLM embeddings for semantic search
+torch>=2.2
+sentencepiece>=0.2           # needed by MarianMT tokenizers
+sacremoses>=0.1              # needed by MarianMT tokenizers
+
+# --- development ------------------------------------------------------------
+pytest>=8.0
+nbformat>=5.9

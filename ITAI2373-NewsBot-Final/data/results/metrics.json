@@ -1,0 +1,1599 @@
+{
+  "run": "full",
+  "date": "2026-11-25 20:21",
+  "data": {
+    "bbc": {
+      "n_rows": 2092,
+      "ok": true,
+      "issues": [],
+      "stats": {
+        "median_words": 324,
+        "min_words": 84,
+        "category_counts": {
+          "business": 500,
+          "sport": 494,
+          "politics": 395,
+          "entertainment": 366,
+          "tech": 337
+        },
+        "imbalance_ratio": 1.48,
+        "languages": {
+          "en": 2092
+        },
+        "lowercased_share": 0.0
+      }
+    },
+    "webz": {
+      "n_rows": 13213,
+      "ok": true,
+      "issues": [],
+      "stats": {
+        "median_words": 428,
+        "min_words": 40,
+        "category_counts": {
+          "politics": 4220,
+          "sport": 3637,
+          "tech": 3169,
+          "business": 2187
+        },
+        "imbalance_ratio": 1.93,
+        "languages": {
+          "en": 8701,
+          "es": 2257,
+          "de": 634,
+          "pt": 625,
+          "fr": 537,
+          "it": 459
+        },
+        "lowercased_share": 0.0,
+        "date_range": [
+          "2023-12-27",
+          "2026-11-13"
+        ]
+      }
+    },
+    "webz_by_language": {
+      "en": 8701,
+      "es": 2257,
+      "de": 634,
+      "pt": 625,
+      "fr": 537,
+      "it": 459
+    },
+    "webz_by_language_category": {
+      "business": {
+        "de": 168,
+        "en": 1601,
+        "es": 246,
+        "fr": 53,
+        "it": 59,
+        "pt": 60
+      },
+      "politics": {
+        "de": 61,
+        "en": 2483,
+        "es": 1171,
+        "fr": 153,
+        "it": 114,
+        "pt": 238
+      },
+      "sport": {
+        "de": 195,
+        "en": 2383,
+        "es": 495,
+        "fr": 180,
+        "it": 153,
+        "pt": 231
+      },
+      "tech": {
+        "de": 210,
+        "en": 2234,
+        "es": 345,
+        "fr": 151,
+        "it": 133,
+        "pt": 96
+      }
+    },
+    "webz_quarters": {
+      "2023Q4": 3427,
+      "2024Q2": 961,
+      "2024Q3": 930,
+      "2024Q4": 1912,
+      "2025Q1": 921,
+      "2025Q2": 721,
+      "2025Q3": 499,
+      "2025Q4": 588,
+      "2026Q1": 359,
+      "2026Q2": 641,
+      "2026Q3": 1228,
+      "2026Q4": 1026
+    },
+    "language_label_issues_removed": 63
+  },
+  "build_timings_s": {
+    "classifier": 0.58,
+    "language detector": 0.1,
+    "enrich corpus": 0.17,
+    "knowledge graph": 112.82,
+    "topic model": 17.2,
+    "summarizer": 0.0,
+    "semantic index": 72.88,
+    "intent classifier": 0.12
+  },
+  "classification": {
+    "bbc_split": {
+      "train": 1673,
+      "test": 419
+    },
+    "baselines": [
+      {
+        "model": "Naive Bayes (word TF-IDF)",
+        "accuracy": 0.9714,
+        "macro_f1": 0.9699,
+        "train_s": 0.1551
+      },
+      {
+        "model": "Logistic Regression (word TF-IDF)",
+        "accuracy": 0.9761,
+        "macro_f1": 0.9751,
+        "train_s": 0.2527
+      },
+      {
+        "model": "Linear SVM (word TF-IDF) – midterm style",
+        "accuracy": 0.9785,
+        "macro_f1": 0.9775,
+        "train_s": 0.6058
+      },
+      {
+        "model": "Linear SVM (word+char TF-IDF)",
+        "accuracy": 0.9761,
+        "macro_f1": 0.9754,
+        "train_s": 3.7554
+      },
+      {
+        "model": "NewsBot 2.0 Ensemble (SVM+LR+NB, word+char)",
+        "accuracy": 0.9737,
+        "macro_f1": 0.9727,
+        "train_s": 7.78
+      },
+      {
+        "model": "Midterm Linear SVM (reported)",
+        "accuracy": 0.9617,
+        "macro_f1": 0.9582,
+        "train_s": null
+      }
+    ],
+    "ensemble_bbc_test": {
+      "accuracy": 0.9737,
+      "macro_f1": 0.9727,
+      "ms_per_article": 1.99
+    },
+    "ensemble_cv_macro_f1": {
+      "folds": 5,
+      "mean": 0.9796,
+      "std": 0.0043
+    },
+    "per_class_bbc": [
+      {
+        "class": "business",
+        "precision": 0.9796,
+        "recall": 0.96,
+        "f1-score": 0.9697,
+        "support": 100.0
+      },
+      {
+        "class": "entertainment",
+        "precision": 0.9595,
+        "recall": 0.9726,
+        "f1-score": 0.966,
+        "support": 73.0
+      },
+      {
+        "class": "politics",
+        "precision": 0.9506,
+        "recall": 0.9747,
+        "f1-score": 0.9625,
+        "support": 79.0
+      },
+      {
+        "class": "sport",
+        "precision": 1.0,
+        "recall": 0.9899,
+        "f1-score": 0.9949,
+        "support": 99.0
+      },
+      {
+        "class": "tech",
+        "precision": 0.9706,
+        "recall": 0.9706,
+        "f1-score": 0.9706,
+        "support": 68.0
+      }
+    ],
+    "calibration_bbc": [
+      {
+        "bin": "0.2-0.4",
+        "n": 2,
+        "mean_confidence": 0.368,
+        "accuracy": 0.5
+      },
+      {
+        "bin": "0.4-0.6",
+        "n": 7,
+        "mean_confidence": 0.535,
+        "accuracy": 0.571
+      },
+      {
+        "bin": "0.6-0.8",
+        "n": 15,
+        "mean_confidence": 0.699,
+        "accuracy": 0.8
+      },
+      {
+        "bin": "0.8-1.0",
+        "n": 395,
+        "mean_confidence": 0.972,
+        "accuracy": 0.99
+      }
+    ],
+    "cross_domain_webz_en": {
+      "n": 2611,
+      "bbc_only_model": {
+        "accuracy": 0.6875,
+        "macro_f1": 0.5595
+      },
+      "newsbot2_model": {
+        "accuracy": 0.8296,
+        "macro_f1": 0.6534
+      }
+    },
+    "newsbot2_model_on_bbc_test": {
+      "accuracy": 0.9642,
+      "macro_f1": 0.963
+    },
+    "review_flag": {
+      "share_flagged": 0.092,
+      "accuracy_unflagged": 0.843,
+      "accuracy_flagged": 0.378
+    },
+    "non_english_tfidf_accuracy": {
+      "es": 0.74,
+      "de": 0.6867,
+      "fr": 0.8067,
+      "it": 0.7267,
+      "pt": 0.7767
+    }
+  },
+  "sentiment": {
+    "eval_vs_webz_labels_n": 3000,
+    "accuracy_whole_text_vader": 0.6827,
+    "accuracy_sentence_avg_vader": 0.6987,
+    "accuracy_sentence_avg_news_lexicon": 0.6993,
+    "whole_text_saturation_share": 0.714,
+    "by_category": {
+      "business": 0.0984,
+      "entertainment": 0.1802,
+      "politics": 0.013,
+      "sport": 0.0617,
+      "tech": 0.0848
+    },
+    "by_language": {
+      "de": -0.2118,
+      "en": 0.1046,
+      "es": -0.0226,
+      "fr": 0.0092,
+      "it": 0.0604,
+      "pt": -0.0509
+    },
+    "emotions_by_category": {
+      "business": {
+        "anger": 0.0679,
+        "anticipation": 0.1875,
+        "disgust": 0.037,
+        "fear": 0.119,
+        "joy": 0.1076,
+        "sadness": 0.1038,
+        "surprise": 0.0587,
+        "trust": 0.305
+      },
+      "entertainment": {
+        "anger": 0.0835,
+        "anticipation": 0.1859,
+        "disgust": 0.0464,
+        "fear": 0.0851,
+        "joy": 0.167,
+        "sadness": 0.0963,
+        "surprise": 0.0917,
+        "trust": 0.2441
+      },
+      "politics": {
+        "anger": 0.1003,
+        "anticipation": 0.1456,
+        "disgust": 0.0605,
+        "fear": 0.1355,
+        "joy": 0.074,
+        "sadness": 0.101,
+        "surprise": 0.0668,
+        "trust": 0.2931
+      },
+      "sport": {
+        "anger": 0.0914,
+        "anticipation": 0.1712,
+        "disgust": 0.0454,
+        "fear": 0.1213,
+        "joy": 0.0996,
+        "sadness": 0.1218,
+        "surprise": 0.0703,
+        "trust": 0.2534
+      },
+      "tech": {
+        "anger": 0.0759,
+        "anticipation": 0.1835,
+        "disgust": 0.048,
+        "fear": 0.1347,
+        "joy": 0.1005,
+        "sadness": 0.1064,
+        "surprise": 0.0639,
+        "trust": 0.2749
+      }
+    },
+    "anomalies": [
+      {
+        "period": "2023Q4",
+        "category": "business",
+        "mean_sentiment": 0.21677661624575337,
+        "z_score": 1.5289404409684972
+      },
+      {
+        "period": "2024Q3",
+        "category": "politics",
+        "mean_sentiment": 0.15817277173040015,
+        "z_score": 1.7726634159757633
+      }
+    ]
+  },
+  "ner": {
+    "casing_experiment_150_bbc_articles": {
+      "entities_original_casing": 3279,
+      "entities_lowercased": 1709,
+      "gain_pct": 91.9
+    },
+    "graph_nodes": 10744,
+    "graph_edges": 34403,
+    "edges_with_typed_relations": 7470,
+    "top_relation_types": [
+      [
+        "ROLE_AT",
+        649
+      ],
+      [
+        "TELL",
+        253
+      ],
+      [
+        "HAVE",
+        200
+      ],
+      [
+        "SAY",
+        152
+      ],
+      [
+        "TAKE",
+        143
+      ],
+      [
+        "MAKE",
+        122
+      ],
+      [
+        "WIN",
+        92
+      ],
+      [
+        "ANNOUNCE",
+        91
+      ],
+      [
+        "LEAD",
+        75
+      ],
+      [
+        "FACE",
+        69
+      ]
+    ],
+    "top_entities": [
+      {
+        "entity": "United States",
+        "type": "GPE",
+        "mentions": 759,
+        "degree": 1309
+      },
+      {
+        "entity": "United Kingdom",
+        "type": "GPE",
+        "mentions": 358,
+        "degree": 625
+      },
+      {
+        "entity": "Donald Trump",
+        "type": "PERSON",
+        "mentions": 215,
+        "degree": 439
+      },
+      {
+        "entity": "AI",
+        "type": "GPE",
+        "mentions": 202,
+        "degree": 264
+      },
+      {
+        "entity": "India",
+        "type": "GPE",
+        "mentions": 179,
+        "degree": 372
+      },
+      {
+        "entity": "China",
+        "type": "GPE",
+        "mentions": 172,
+        "degree": 313
+      },
+      {
+        "entity": "Europe",
+        "type": "GPE",
+        "mentions": 163,
+        "degree": 289
+      },
+      {
+        "entity": "Joe Biden",
+        "type": "PERSON",
+        "mentions": 156,
+        "degree": 341
+      },
+      {
+        "entity": "London",
+        "type": "GPE",
+        "mentions": 151,
+        "degree": 348
+      },
+      {
+        "entity": "Russia",
+        "type": "GPE",
+        "mentions": 113,
+        "degree": 230
+      },
+      {
+        "entity": "New York",
+        "type": "GPE",
+        "mentions": 112,
+        "degree": 142
+      },
+      {
+        "entity": "England",
+        "type": "GPE",
+        "mentions": 112,
+        "degree": 295
+      },
+      {
+        "entity": "Australia",
+        "type": "GPE",
+        "mentions": 111,
+        "degree": 217
+      },
+      {
+        "entity": "Washington",
+        "type": "GPE",
+        "mentions": 111,
+        "degree": 221
+      },
+      {
+        "entity": "Israel",
+        "type": "GPE",
+        "mentions": 111,
+        "degree": 211
+      }
+    ],
+    "connection_examples": {
+      "Donald Trump – China": {
+        "found": true,
+        "direct": true,
+        "weight": 19,
+        "relations": {
+          "GET": 1,
+          "BACK": 1
+        },
+        "paths": [
+          [
+            "Donald Trump",
+            "China"
+          ]
+        ]
+      },
+      "Elon Musk – Tesla": {
+        "found": true,
+        "direct": true,
+        "weight": 10,
+        "relations": {
+          "ROLE_AT": 1,
+          "TOUT": 1
+        },
+        "paths": [
+          [
+            "Elon Musk",
+            "Tesla"
+          ]
+        ]
+      },
+      "Apple – Google": {
+        "found": true,
+        "direct": true,
+        "weight": 8,
+        "relations": {
+          "COMPETE": 1,
+          "TOE": 1
+        },
+        "paths": [
+          [
+            "Apple",
+            "Google"
+          ]
+        ]
+      },
+      "OpenAI – Microsoft": {
+        "found": true,
+        "direct": true,
+        "weight": 8,
+        "relations": {
+          "NAME": 1
+        },
+        "paths": [
+          [
+            "OpenAI",
+            "Microsoft"
+          ]
+        ]
+      }
+    }
+  },
+  "topics": {
+    "selection": [
+      {
+        "n_topics": 8,
+        "method": "nmf",
+        "npmi": 0.405,
+        "diversity": 0.95,
+        "score": 1.0
+      },
+      {
+        "n_topics": 10,
+        "method": "nmf",
+        "npmi": 0.4416,
+        "diversity": 0.94,
+        "score": 1.409636222910216
+      },
+      {
+        "n_topics": 12,
+        "method": "nmf",
+        "npmi": 0.4194,
+        "diversity": 0.9333,
+        "score": 0.8252321981424153
+      },
+      {
+        "n_topics": 15,
+        "method": "nmf",
+        "npmi": 0.436,
+        "diversity": 0.9413,
+        "score": 1.3409055727554193
+      },
+      {
+        "n_topics": 20,
+        "method": "nmf",
+        "npmi": 0.4594,
+        "diversity": 0.912,
+        "score": 1.0
+      },
+      {
+        "n_topics": 8,
+        "method": "lda",
+        "npmi": 0.1908,
+        "diversity": 0.84,
+        "score": 1.0
+      },
+      {
+        "n_topics": 12,
+        "method": "lda",
+        "npmi": 0.2002,
+        "diversity": 0.77,
+        "score": 0.2520107238605896
+      },
+      {
+        "n_topics": 16,
+        "method": "lda",
+        "npmi": 0.2281,
+        "diversity": 0.775,
+        "score": 1.0714285714285716
+      }
+    ],
+    "final": {
+      "method": "nmf",
+      "k": 15,
+      "npmi": 0.4254,
+      "diversity": 0.9253,
+      "purity_vs_category": 0.7661
+    },
+    "topics": [
+      {
+        "topic": 6,
+        "label": "users / features / online",
+        "top_words": "users, features, online, up, using, google, phone, mobile, free, software",
+        "prevalence": 0.1179,
+        "npmi": 0.1896
+      },
+      {
+        "topic": 1,
+        "label": "game / season / team",
+        "top_words": "game, season, team, points, games, win, play, nba, second, night",
+        "prevalence": 0.1037,
+        "npmi": 0.307
+      },
+      {
+        "topic": 8,
+        "label": "court / law / state",
+        "top_words": "court, law, state, case, federal, justice, legal, attorney, police, supreme",
+        "prevalence": 0.1018,
+        "npmi": 0.3067
+      },
+      {
+        "topic": 14,
+        "label": "match / cup / win",
+        "top_words": "match, cup, win, england, world, against, final, team, game, club",
+        "prevalence": 0.0959,
+        "npmi": 0.1931
+      },
+      {
+        "topic": 4,
+        "label": "ai / technology / solutions",
+        "top_words": "ai, technology, solutions, development, industry, digital, business, global, innovation, data",
+        "prevalence": 0.0919,
+        "npmi": 0.2904
+      },
+      {
+        "topic": 12,
+        "label": "health / treatment / study",
+        "top_words": "health, treatment, study, patients, research, cancer, care, medical, disease, researchers",
+        "prevalence": 0.0735,
+        "npmi": 0.375
+      },
+      {
+        "topic": 7,
+        "label": "israel / ukraine / military",
+        "top_words": "israel, ukraine, military, russia, war, israeli, gaza, russian, iran, minister",
+        "prevalence": 0.0635,
+        "npmi": 0.4083
+      },
+      {
+        "topic": 11,
+        "label": "stock / price / market",
+        "top_words": "stock, price, market, trading, investors, shares, stocks, company, earnings, buy",
+        "prevalence": 0.062,
+        "npmi": 0.4271
+      },
+      {
+        "topic": 10,
+        "label": "film / awards / award",
+        "top_words": "film, awards, award, best, films, actor, music, star, actress, oscar",
+        "prevalence": 0.0615,
+        "npmi": 0.3546
+      },
+      {
+        "topic": 2,
+        "label": "trump / biden / president",
+        "top_words": "trump, biden, president, donald, donald trump, harris, joe, election, campaign, joe biden",
+        "prevalence": 0.0581,
+        "npmi": 0.5072
+      },
+      {
+        "topic": 5,
+        "label": "labour / minister / party",
+        "top_words": "labour, minister, party, election, blair, government, prime minister, prime, tories, tory",
+        "prevalence": 0.0576,
+        "npmi": 0.4437
+      },
+      {
+        "topic": 0,
+        "label": "growth / economy / economic",
+        "top_words": "growth, economy, economic, prices, bank, rate, market, sales, oil, rates",
+        "prevalence": 0.0542,
+        "npmi": 0.2881
+      },
+      {
+        "topic": 13,
+        "label": "brighton / tottenham / spurs",
+        "top_words": "brighton, tottenham, spurs, pedro, postecoglou, joao pedro, joao, veliz, ange, estupinan",
+        "prevalence": 0.0238,
+        "npmi": 0.8546
+      },
+      {
+        "topic": 3,
+        "label": "arsenal / west ham / ham",
+        "top_words": "arsenal, west ham, ham, west, arteta, premier league, league, premier, soucek, liverpool",
+        "prevalence": 0.022,
+        "npmi": 0.6971
+      },
+      {
+        "topic": 9,
+        "label": "cd / ed / ce",
+        "top_words": "cd, ed, ce, ac, fc, fd, cj, ec, ee, ej",
+        "prevalence": 0.0128,
+        "npmi": 0.7393
+      }
+    ],
+    "emerging": [
+      {
+        "topic": "stock / price / market",
+        "first_share": 0.0602,
+        "last_share": 0.1689,
+        "change": 0.1087
+      },
+      {
+        "topic": "game / season / team",
+        "first_share": 0.1089,
+        "last_share": 0.2121,
+        "change": 0.1032
+      },
+      {
+        "topic": "match / cup / win",
+        "first_share": 0.0704,
+        "last_share": 0.1096,
+        "change": 0.0392
+      },
+      {
+        "topic": "growth / economy / economic",
+        "first_share": 0.0397,
+        "last_share": 0.069,
+        "change": 0.0293
+      },
+      {
+        "topic": "ai / technology / solutions",
+        "first_share": 0.1032,
+        "last_share": 0.1223,
+        "change": 0.0191
+      }
+    ]
+  },
+  "semantic_search": {
+    "backend": "lsa",
+    "retrieval_precision_at_10": {
+      "k": 10,
+      "queries": 300,
+      "precision_at_k": 0.7823,
+      "backend": "lsa"
+    },
+    "queries": {
+      "technology companies facing regulation": [
+        {
+          "title": "The Exciting Expectations for CES 2024 | Robots.net",
+          "language": "en",
+          "category": "tech",
+          "score": 0.3728
+        },
+        {
+          "title": "Xenco Medical lands on the world's most innovative companies list for the second time - Digital Journal",
+          "language": "en",
+          "category": "tech",
+          "score": 0.3552
+        },
+        {
+          "title": "Could Anthropic's IPO Reshape the Global AI Market?",
+          "language": "en",
+          "category": "tech",
+          "score": 0.3303
+        }
+      ],
+      "central bank interest rates inflation": [
+        {
+          "title": "ECB has no room for complacency as attack on Fed raises risks, Kazaks says | MarketScreener",
+          "language": "en",
+          "category": "business",
+          "score": 0.4858
+        },
+        {
+          "title": "Bank voted 8-1 for no rate change",
+          "language": "en",
+          "category": "business",
+          "score": 0.4776
+        },
+        {
+          "title": "Malaysia lifts Islamic bank limit",
+          "language": "en",
+          "category": "business",
+          "score": 0.4638
+        }
+      ],
+      "football transfer window": [
+        {
+          "title": "Texas Longhorns get big boost for 2025 season with Trey Moore return",
+          "language": "en",
+          "category": "sport",
+          "score": 0.3687
+        },
+        {
+          "title": "Michigan Four-Star Cornerback Departs Program Just Days Before College Football Playoff",
+          "language": "en",
+          "category": "sport",
+          "score": 0.3597
+        },
+        {
+          "title": "NFL Draft analyst 'couldn't be happier' after Carson Beck transfer - NewsBreak",
+          "language": "en",
+          "category": "sport",
+          "score": 0.3551
+        }
+      ],
+      "election campaign results": [
+        {
+          "title": "Labour MP praises Tory campaign",
+          "language": "en",
+          "category": "politics",
+          "score": 0.453
+        },
+        {
+          "title": "February poll claim 'speculation'",
+          "language": "en",
+          "category": "politics",
+          "score": 0.4394
+        },
+        {
+          "title": "Labour battle plan 'hides Blair'",
+          "language": "en",
+          "category": "politics",
+          "score": 0.4369
+        }
+      ]
+    },
+    "expansion_examples": {
+      "ai regulation": {
+        "ai": [
+          "artificial intelligence",
+          "machine learning",
+          "chatbot",
+          "generative"
+        ],
+        "regulation": [
+          "rules",
+          "law",
+          "regulator",
+          "antitrust"
+        ]
+      },
+      "economy": {
+        "economy": [
+          "economic",
+          "gdp",
+          "growth",
+          "inflation"
+        ]
+      },
+      "election": {
+        "election": [
+          "vote",
+          "poll",
+          "campaign",
+          "ballot"
+        ]
+      }
+    }
+  },
+  "summarization": {
+    "headline_vs_title": {
+      "compression": 0.0395,
+      "rouge1": 0.2506,
+      "rouge2": 0.0557,
+      "rougeL": 0.2254,
+      "redundancy": 0.0138,
+      "novel_word_ratio": 0.0
+    },
+    "lead": {
+      "compression": 0.202,
+      "redundancy": 0.0179,
+      "novel_word_ratio": 0.0,
+      "entity_coverage": 0.3432,
+      "rouge1": null,
+      "rouge2": null,
+      "rougeL": null
+    },
+    "textrank": {
+      "compression": 0.2249,
+      "redundancy": 0.0346,
+      "novel_word_ratio": 0.0,
+      "entity_coverage": 0.3322,
+      "rouge1": null,
+      "rouge2": null,
+      "rougeL": null
+    }
+  },
+  "language_detection": {
+    "first_20_chars": {
+      "accuracy": 0.7933,
+      "macro_f1": 0.7919
+    },
+    "first_50_chars": {
+      "accuracy": 0.9544,
+      "macro_f1": 0.9546
+    },
+    "first_100_chars": {
+      "accuracy": 0.9856,
+      "macro_f1": 0.9856
+    },
+    "first_300_chars": {
+      "accuracy": 0.9922,
+      "macro_f1": 0.9922
+    },
+    "langdetect_baseline_first_100_chars": {
+      "accuracy": 0.9733
+    },
+    "mixed_example": {
+      "mixed": true,
+      "shares": {
+        "en": 0.333,
+        "es": 0.333,
+        "de": 0.333
+      },
+      "segments": [
+        {
+          "sentence": "The meeting was postponed until Friday.",
+          "language": "en",
+          "confidence": 0.9759
+        },
+        {
+          "sentence": "El presidente dijo que la economía crecerá.",
+          "language": "es",
+          "confidence": 0.9507
+        },
+        {
+          "sentence": "Die Börse reagierte positiv.",
+          "language": "de",
+          "confidence": 0.6486
+        }
+      ]
+    }
+  },
+  "cross_lingual": {
+    "coverage": {
+      "de": {
+        "business": 0.266,
+        "politics": 0.097,
+        "sport": 0.307,
+        "tech": 0.331
+      },
+      "en": {
+        "business": 0.184,
+        "politics": 0.285,
+        "sport": 0.274,
+        "tech": 0.257
+      },
+      "es": {
+        "business": 0.108,
+        "politics": 0.52,
+        "sport": 0.219,
+        "tech": 0.152
+      },
+      "fr": {
+        "business": 0.099,
+        "politics": 0.285,
+        "sport": 0.335,
+        "tech": 0.281
+      },
+      "it": {
+        "business": 0.129,
+        "politics": 0.247,
+        "sport": 0.333,
+        "tech": 0.291
+      },
+      "pt": {
+        "business": 0.096,
+        "politics": 0.381,
+        "sport": 0.37,
+        "tech": 0.152
+      }
+    },
+    "positive_share": {
+      "de": {
+        "business": 0.565,
+        "politics": 1.0,
+        "sport": 0.356,
+        "tech": 0.316,
+        "overall": 0.46,
+        "n": 632
+      },
+      "en": {
+        "business": 0.814,
+        "politics": 0.342,
+        "sport": 0.402,
+        "tech": 0.613,
+        "overall": 0.515,
+        "n": 8648
+      },
+      "es": {
+        "business": 0.742,
+        "politics": 0.277,
+        "sport": 0.447,
+        "tech": 0.434,
+        "overall": 0.389,
+        "n": 2252
+      },
+      "fr": {
+        "business": 0.547,
+        "politics": 0.333,
+        "sport": 0.528,
+        "tech": 0.285,
+        "overall": 0.406,
+        "n": 537
+      },
+      "it": {
+        "business": 0.61,
+        "politics": 0.398,
+        "sport": 0.349,
+        "tech": 0.218,
+        "overall": 0.357,
+        "n": 457
+      },
+      "pt": {
+        "business": 0.717,
+        "politics": 0.206,
+        "sport": 0.472,
+        "tech": 0.611,
+        "overall": 0.415,
+        "n": 624
+      }
+    },
+    "entity_overlap": {
+      "de": {
+        "de": 1.0,
+        "en": 0.053,
+        "es": 0.053,
+        "fr": 0.042,
+        "it": 0.064,
+        "pt": 0.02
+      },
+      "en": {
+        "de": 0.053,
+        "en": 1.0,
+        "es": 0.163,
+        "fr": 0.235,
+        "it": 0.075,
+        "pt": 0.087
+      },
+      "es": {
+        "de": 0.053,
+        "en": 0.163,
+        "es": 1.0,
+        "fr": 0.176,
+        "it": 0.087,
+        "pt": 0.136
+      },
+      "fr": {
+        "de": 0.042,
+        "en": 0.235,
+        "es": 0.176,
+        "fr": 1.0,
+        "it": 0.099,
+        "pt": 0.124
+      },
+      "it": {
+        "de": 0.064,
+        "en": 0.075,
+        "es": 0.087,
+        "fr": 0.099,
+        "it": 1.0,
+        "pt": 0.064
+      },
+      "pt": {
+        "de": 0.02,
+        "en": 0.087,
+        "es": 0.136,
+        "fr": 0.124,
+        "it": 0.064,
+        "pt": 1.0
+      }
+    },
+    "perspectives": {
+      "Donald Trump": [
+        {
+          "language": "en",
+          "articles": 474,
+          "share_of_language": 0.0548,
+          "positive_share": 0.232,
+          "top_co_mentions": "United States, Joe Biden, Republican, Kamala Harris, CNN"
+        },
+        {
+          "language": "es",
+          "articles": 91,
+          "share_of_language": 0.0404,
+          "positive_share": 0.363,
+          "top_co_mentions": "United States, Joe Biden, Kamala Harris, Washington, Casa Blanca"
+        },
+        {
+          "language": "de",
+          "articles": 32,
+          "share_of_language": 0.0506,
+          "positive_share": 0.312,
+          "top_co_mentions": "United States, China, Fachwelt, München, Konsens"
+        },
+        {
+          "language": "fr",
+          "articles": 23,
+          "share_of_language": 0.0428,
+          "positive_share": 0.348,
+          "top_co_mentions": "Joe Biden, Washington, United States, Kamala Harris, Elon Musk"
+        },
+        {
+          "language": "it",
+          "articles": 22,
+          "share_of_language": 0.0481,
+          "positive_share": 0.318,
+          "top_co_mentions": "United States, Elon Musk, l'Iran, Italy, Adnkronos"
+        },
+        {
+          "language": "pt",
+          "articles": 20,
+          "share_of_language": 0.0321,
+          "positive_share": 0.15,
+          "top_co_mentions": "United States, Irã, Nova, Real Madrid, Leia"
+        }
+      ],
+      "China": [
+        {
+          "language": "en",
+          "articles": 277,
+          "share_of_language": 0.032,
+          "positive_share": 0.52,
+          "top_co_mentions": "United States, Chinese, Beijing, Russia, Donald Trump"
+        },
+        {
+          "language": "es",
+          "articles": 43,
+          "share_of_language": 0.0191,
+          "positive_share": 0.465,
+          "top_co_mentions": "Russia, United States, Ukraine, India, Asia"
+        },
+        {
+          "language": "de",
+          "articles": 25,
+          "share_of_language": 0.0396,
+          "positive_share": 0.28,
+          "top_co_mentions": "United States, Donald Trump, Frankfurt, Fachwelt, München"
+        },
+        {
+          "language": "it",
+          "articles": 10,
+          "share_of_language": 0.0219,
+          "positive_share": 0.3,
+          "top_co_mentions": "United States, Japan, Donald Trump, Europa, United Kingdom"
+        },
+        {
+          "language": "fr",
+          "articles": 7,
+          "share_of_language": 0.013,
+          "positive_share": 0.429,
+          "top_co_mentions": "la Chine, La Chine, Trip.com Group Ltd, Trip.com, Hang Seng"
+        },
+        {
+          "language": "pt",
+          "articles": 6,
+          "share_of_language": 0.0096,
+          "positive_share": 0.5,
+          "top_co_mentions": "Russia, Brazil, Índia, Brics, Vladimir Putin"
+        }
+      ],
+      "United States": [
+        {
+          "language": "en",
+          "articles": 1156,
+          "share_of_language": 0.1337,
+          "positive_share": 0.394,
+          "top_co_mentions": "Donald Trump, Joe Biden, Washington, China, Republican"
+        },
+        {
+          "language": "es",
+          "articles": 175,
+          "share_of_language": 0.0777,
+          "positive_share": 0.383,
+          "top_co_mentions": "Donald Trump, Joe Biden, Russia, Mexico, Washington"
+        },
+        {
+          "language": "de",
+          "articles": 45,
+          "share_of_language": 0.0712,
+          "positive_share": 0.289,
+          "top_co_mentions": "Donald Trump, China, Fachwelt, München, Konsens"
+        },
+        {
+          "language": "pt",
+          "articles": 45,
+          "share_of_language": 0.0721,
+          "positive_share": 0.4,
+          "top_co_mentions": "Brazil, Donald Trump, Russia, Estado, SpaceX"
+        },
+        {
+          "language": "it",
+          "articles": 39,
+          "share_of_language": 0.0853,
+          "positive_share": 0.256,
+          "top_co_mentions": "Donald Trump, Elon Musk, China, Washington, Japan"
+        },
+        {
+          "language": "fr",
+          "articles": 32,
+          "share_of_language": 0.0596,
+          "positive_share": 0.438,
+          "top_co_mentions": "Donald Trump, Israel, Gaza, United Kingdom, Reuters"
+        }
+      ],
+      "Ukraine": [
+        {
+          "language": "en",
+          "articles": 170,
+          "share_of_language": 0.0197,
+          "positive_share": 0.459,
+          "top_co_mentions": "Russia, Russian, United States, NATO, Washington"
+        },
+        {
+          "language": "es",
+          "articles": 69,
+          "share_of_language": 0.0306,
+          "positive_share": 0.232,
+          "top_co_mentions": "Russia, United States, Vladimir Putin, NATO, Kiev"
+        },
+        {
+          "language": "de",
+          "articles": 12,
+          "share_of_language": 0.019,
+          "positive_share": 0.833,
+          "top_co_mentions": "European Union, Straßburg, Europäischen Parlament, Kanada, Friedrich Merz"
+        },
+        {
+          "language": "pt",
+          "articles": 10,
+          "share_of_language": 0.016,
+          "positive_share": 0.3,
+          "top_co_mentions": "Russia, Estado, France, Jordan Bardella, Extrema"
+        },
+        {
+          "language": "fr",
+          "articles": 9,
+          "share_of_language": 0.0168,
+          "positive_share": 0.333,
+          "top_co_mentions": "Info Patrouille Judiciaire Politique International Société Techno Faites, TVA Québec, Saguenay-Lac-St-Jean TVA Est-du-Québec Populaires, Vidéos Accueil Vidéos TVA Nouvelles Buzz Argent Bulletins, Accueil Actualités Toute"
+        },
+        {
+          "language": "it",
+          "articles": 8,
+          "share_of_language": 0.0175,
+          "positive_share": 0.0,
+          "top_co_mentions": "Russia, Kiev, Mosca, United States, Volodymyr Zelensky"
+        }
+      ]
+    },
+    "top_entities_by_language": {
+      "de": [
+        [
+          "United States",
+          45
+        ],
+        [
+          "CVSS",
+          44
+        ],
+        [
+          "BSI",
+          44
+        ],
+        [
+          "Sicherheitspatches",
+          44
+        ],
+        [
+          "Bundesamt für Sicherheit",
+          44
+        ],
+        [
+          "Sicherheitslücke",
+          44
+        ],
+        [
+          "Risikostufe",
+          41
+        ],
+        [
+          "Base Score",
+          38
+        ]
+      ],
+      "en": [
+        [
+          "United States",
+          1156
+        ],
+        [
+          "Donald Trump",
+          474
+        ],
+        [
+          "AI",
+          417
+        ],
+        [
+          "India",
+          340
+        ],
+        [
+          "Joe Biden",
+          331
+        ],
+        [
+          "United Kingdom",
+          280
+        ],
+        [
+          "China",
+          277
+        ],
+        [
+          "Washington",
+          224
+        ]
+      ],
+      "es": [
+        [
+          "United States",
+          175
+        ],
+        [
+          "Estado",
+          131
+        ],
+        [
+          "Spain",
+          122
+        ],
+        [
+          "Gobierno",
+          113
+        ],
+        [
+          "Mexico",
+          105
+        ],
+        [
+          "PP",
+          103
+        ],
+        [
+          "Congreso",
+          94
+        ],
+        [
+          "Donald Trump",
+          91
+        ]
+      ],
+      "fr": [
+        [
+          "France",
+          42
+        ],
+        [
+          "Paris",
+          33
+        ],
+        [
+          "United States",
+          32
+        ],
+        [
+          "Donald Trump",
+          23
+        ],
+        [
+          "Liverpool",
+          22
+        ],
+        [
+          "PSG",
+          22
+        ],
+        [
+          "Manchester United",
+          18
+        ],
+        [
+          "West Ham",
+          16
+        ]
+      ],
+      "it": [
+        [
+          "United States",
+          39
+        ],
+        [
+          "Italy",
+          30
+        ],
+        [
+          "Roma",
+          27
+        ],
+        [
+          "Napoli",
+          25
+        ],
+        [
+          "Google",
+          24
+        ],
+        [
+          "Milan",
+          23
+        ],
+        [
+          "Donald Trump",
+          22
+        ],
+        [
+          "Juventus",
+          21
+        ]
+      ],
+      "pt": [
+        [
+          "Brazil",
+          91
+        ],
+        [
+          "Lula",
+          46
+        ],
+        [
+          "United States",
+          45
+        ],
+        [
+          "Estado",
+          43
+        ],
+        [
+          "São Paulo",
+          36
+        ],
+        [
+          "Liverpool",
+          32
+        ],
+        [
+          "Brasília",
+          29
+        ],
+        [
+          "Luiz Inácio Lula da Silva",
+          29
+        ]
+      ]
+    },
+    "story_links_found": 15,
+    "story_link_examples": [
+      {
+        "lang_a": "es",
+        "title_a": "Williams y Gillespie llevan a Suns a victoria 112-100 sobre Kings y a foja de 3-0 en Copa ",
+        "lang_b": "en",
+        "title_b": "Williams and Gillespie power Suns to a 112-100 win over Kings and improve to 3-0 in NBA Cu",
+        "shared_entities": "Collin Gillespie, Devin Booker, Gillespie, Keegan Murray, Malik Monk, Mark Williams",
+        "n_shared": 12,
+        "days_apart": 1
+      },
+      {
+        "lang_a": "fr",
+        "title_a": "De nouvelles sanctions à l’encontre des actes de violence commis par des colons extrémiste",
+        "lang_b": "es",
+        "title_b": "Canadá impone una segunda ronda de sanciones contra colonos israelíes \"extremistas\" - Info",
+        "shared_entities": "Ben Zion Gopstein, Daniella Weiss, Einan Ben-Nir Amram Tanjil, Elisha Yered, Ely Federman, Farm",
+        "n_shared": 12,
+        "days_apart": 1
+      },
+      {
+        "lang_a": "es",
+        "title_a": "Arsenal cae 2-0 en casa ante West Ham, Liverpool líder en firme | El Nuevo Siglo",
+        "lang_b": "pt",
+        "title_b": "Arsenal perde em casa para West Ham, e Liverpool é líder do Inglês",
+        "shared_entities": "Aston Villa, Brighton, Emirates Stadium, Everton, Gunners, Hammers",
+        "n_shared": 11,
+        "days_apart": 1
+      },
+      {
+        "lang_a": "es",
+        "title_a": "Resumen: Triplete de Amad Diallo en el triunfo de Manchester United ante Southampton por 3",
+        "lang_b": "en",
+        "title_b": "Amad's the man as Man United comeback stuns Southampton | Flashscore.co.uk",
+        "shared_entities": "Alejandro Garnacho, André Onana, Kamaldeen Sulemana, Kobbie Mainoo, Leny Yoro, Manuel Ugarte",
+        "n_shared": 11,
+        "days_apart": 0
+      },
+      {
+        "lang_a": "en",
+        "title_a": "Amad's the man as Man United comeback stuns Southampton | Flashscore.co.uk",
+        "lang_b": "es",
+        "title_b": "Triplete de Amad Diallo en el triunfo de Manchester United ante Southampton por 3-1 | Prem",
+        "shared_entities": "Alejandro Garnacho, André Onana, Kamaldeen Sulemana, Kobbie Mainoo, Leny Yoro, Manuel Ugarte",
+        "n_shared": 11,
+        "days_apart": 1
+      },
+      {
+        "lang_a": "en",
+        "title_a": "Alejo Véliz scored his first goal for Tottenham, who are struggling without Cuti Romero: L",
+        "lang_b": "es",
+        "title_b": "Alejo Véliz convirtió su primer gol en el Tottenham, que sufre sin Cuti Romero: Lo Celso h",
+        "shared_entities": "Alejo Véliz, Ben Davies, Brighton, Cuti Romero, Facundo Buonanotte, Gio Lo Celso",
+        "n_shared": 11,
+        "days_apart": 0
+      }
+    ],
+    "country_focus": [
+      {
+        "language": "de",
+        "articles_with_country": 622,
+        "home_country_share": 0.883,
+        "top_source_countries": "DE, VN, AT, CH"
+      },
+      {
+        "language": "en",
+        "articles_with_country": 8577,
+        "home_country_share": 0.814,
+        "top_source_countries": "US, IN, GB, CA"
+      },
+      {
+        "language": "es",
+        "articles_with_country": 2248,
+        "home_country_share": 0.774,
+        "top_source_countries": "ES, AR, MX, US"
+      },
+      {
+        "language": "fr",
+        "articles_with_country": 529,
+        "home_country_share": 0.788,
+        "top_source_countries": "FR, BE, CA, VN"
+      },
+      {
+        "language": "it",
+        "articles_with_country": 457,
+        "home_country_share": 0.932,
+        "top_source_countries": "IT, US, CH, "
+      },
+      {
+        "language": "pt",
+        "articles_with_country": 619,
+        "home_country_share": 0.837,
+        "top_source_countries": "BR, PT, IT, US"
+      }
+    ]
+  },
+  "conversation": {
+    "training_examples": 960,
+    "intents": 13,
+    "held_out_accuracy": 0.9767,
+    "held_out_macro_f1": 0.9831,
+    "held_out_n": 43,
+    "errors": [
+      [
+        "Sum up what happened with Apple",
+        "summarize",
+        "search"
+      ]
+    ],
+    "median_response_ms": 51.0
+  },
+  "latency_ms_per_article_full_analysis": 403,
+  "total_runtime_min": 7.7
+}
