@@ -46,12 +46,12 @@ class IntelligentSummarizer:
         """Create the object; parameters are described in the class docstring."""
         self.pre = TextPreprocessor()
         self.model_name = model_name
-        self._pipe = None
+        self._pipe = None  # Seq2SeqModel when the abstractive model is loaded
         if use_transformer:
             try:
-                from transformers import pipeline
-                self._pipe = pipeline("summarization", model=model_name)
-                log.info("Loaded abstractive model %s", model_name)
+                from src.language_models.seq2seq import Seq2SeqModel
+                self._pipe = Seq2SeqModel(model_name)
+                log.info("Loaded abstractive model %s on %s", model_name, self._pipe.device)
             except Exception as exc:
                 log.warning("Abstractive model unavailable (%s) – using TextRank", exc)
 
@@ -101,11 +101,9 @@ class IntelligentSummarizer:
         """Abstractive summary with DistilBART (falls back to TextRank)."""
         if self._pipe is None:
             return self.textrank(text)
-        words = text.split()
-        chunk = " ".join(words[:700])  # model limit ~1024 tokens
-        out = self._pipe(chunk, max_length=max_length, min_length=min(min_length, max_length - 5),
-                         do_sample=False, truncation=True)
-        return out[0]["summary_text"].strip()
+        chunk = " ".join(text.split()[:700])  # model limit ~1024 tokens
+        return self._pipe.generate([chunk], max_new_tokens=max_length,
+                                   min_new_tokens=min(min_length, max_length - 5))[0]
 
     # ---------------------------------------------------------- public API
     def summarize_article(self, text: str, summary_type: str = "balanced", method: str = "auto") -> dict:

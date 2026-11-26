@@ -50,7 +50,7 @@ class Translator:
         """Create the object; parameters are described in the class docstring."""
         self.use_transformer = use_transformer
         self.max_sentences = max_sentences
-        self.device = device
+        self.device = device  # kept for API compatibility; Seq2SeqModel picks GPU automatically
         self._pipes: Dict[tuple, object] = {}
         self._failed: set = set()
 
@@ -61,10 +61,9 @@ class Translator:
         if not self.use_transformer or key in self._failed or key not in MODEL_NAMES:
             return None
         try:
-            from transformers import pipeline
-            kwargs = {"device": self.device} if self.device is not None else {}
-            self._pipes[key] = pipeline("translation", model=MODEL_NAMES[key], **kwargs)
-            log.info("Loaded translation model %s", MODEL_NAMES[key])
+            from src.language_models.seq2seq import Seq2SeqModel
+            self._pipes[key] = Seq2SeqModel(MODEL_NAMES[key], max_input_tokens=512)
+            log.info("Loaded translation model %s on %s", MODEL_NAMES[key], self._pipes[key].device)
             return self._pipes[key]
         except Exception as exc:
             log.warning("Translation model %s unavailable (%s)", MODEL_NAMES[key], exc)
@@ -90,8 +89,8 @@ class Translator:
         if pipe is not None:
             sents = TextPreprocessor.split_sentences(text)[: self.max_sentences] or [text]
             prefix = TARGET_PREFIX.get((source_language, target_language), "")
-            outs = pipe([prefix + s[:600] for s in sents], max_length=512, truncation=True)
-            return {"text": " ".join(o["translation_text"] for o in outs), "translated": True,
+            outs = pipe.generate([prefix + s[:600] for s in sents], max_new_tokens=256, batch_size=16)
+            return {"text": " ".join(outs), "translated": True,
                     "engine": MODEL_NAMES[(source_language, target_language)]}
         alt = self._deep_translate(text, source_language, target_language)
         if alt:

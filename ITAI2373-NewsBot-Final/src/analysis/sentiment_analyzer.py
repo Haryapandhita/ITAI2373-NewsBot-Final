@@ -78,7 +78,7 @@ class SentimentAnalyzer:
         if use_transformer:
             try:
                 from transformers import pipeline
-                self._pipe = pipeline("sentiment-analysis", model=self.TRANSFORMER,
+                self._pipe = pipeline("text-classification", model=self.TRANSFORMER,
                                       truncation=True, max_length=512)
                 log.info("Loaded transformer sentiment model %s", self.TRANSFORMER)
             except Exception as exc:
